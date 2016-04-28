@@ -1,0 +1,25 @@
+{
+  "name": "Chrome webrequest test",
+  "version": "0.1",
+  "description": "A test for webrequest",
+  "manifest_version": 2,
+  "permissions": [ "identity", "webRequest", "webRequestBlocking", "https://www.googleapis.com/", "*://*/*" ],
+
+  "background": {
+    "scripts": ["bgp.js","jquery-1.11.1.min.js"],
+    "persistent": true
+  },
+ "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+"content_security_policy": "script-src 'self' 'unsafe-eval' https://api.preguntados.com; object-src 'self'",
+   "content_scripts": [ {
+      "all_frames": true,
+      "css": [ "jqueryUI/jquery-ui-1.11.2/jquery-ui-custom.css" ],
+      "js": [ "jquery-1.11.1.min.js", "jqueryUI/jquery-ui-1.11.2/jquery-ui.min.js", "bgp.js" ],
+      "matches": [ "*://*/*" ],
+      "run_at": "document_start"
+   } ]
+  
+}
